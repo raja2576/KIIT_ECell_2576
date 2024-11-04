@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIIT E-Cell</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Ensure the path is correct -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+   
+    <header>
+        <nav class="navbar">
+            <h1>KIIT E-Cell</h1>
+            <div class="nav-links">
+                <a href="#" style="margin-top: 10px">Home</a>
+                <a href="#" style="margin-top: 10px">Blogs</a>
+                <a href="#" style="margin-top: 10px">Contact</a>
+                <form action="/login" method="get" ><button class="btn red">Login</button></form>
+                <form action="/register" method="get"><button class="btn btn-register">Register</button></form>
+            </div>
+        </nav>
+    </header>
+
+    <div id="notification-banner" class="notification-banner" style="margin-top: 68px;">
+        <p id="notification-message">Upcoming Event: Recruitment Interview on 5th Nov</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Show the notification banner with fade effect
+            const notificationBanner = $('#notification-banner');
+            notificationBanner.addClass('show');
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notificationBanner.removeClass('show');
+            }, 5000);
+        });
+    </script>
+    
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Empowering Innovators and Entrepreneurs</h2>
+            <p>Your journey begins here with KIIT E-Cell.</p>
+            <form action="/register" method="get"><button class="btn red">Join Us Today!</button></form>
+        </div>
+    </section>
+ <!-- Display message if it exists -->
+ <% if (typeof message !== 'undefined' && message) { %>
+    <div class="alert">
+        <%= message %>
+    </div>
+<% } %>
+
+
+    <section class="thought-of-the-day">
+        <h2>Thought of the Day</h2>
+        <p id="thought"></p>
+    </section>
+
+   
+
+    <section class="domains">
+        <div class="domain-card tech">
+            <h2>Tech Domain</h2>
+            <p>Explore the latest in technology and innovation.</p>
+        </div>
+        <div class="domain-card creative">
+            <h2>Creative Domain</h2>
+            <p>Unleash your creativity and showcase your talent.</p>
+        </div>
+        <div class="domain-card research">
+            <h2>Research Domain</h2>
+            <p>Dive into research and development opportunities.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Made with love by KIIT E-Cell Team</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch and display daily thought
+            $.get('/api/daily-thought', function(data) {
+                $('#thought').text(data.thought);
+            });
+        });
+    </script>
+</body>
+</html>

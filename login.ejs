@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - KIIT E-Cell</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>KIIT E-Cell</h1>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="login-section">
+        <h2>Login</h2>
+        <% if (typeof message !== 'undefined' && message) { %>
+            <div class="alert"><%= message %></div>
+        <% } %>
+        <form action="/login" method="post">
+            <input type="text" name="roll" placeholder="Enter your roll number" required>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Made with love by KIIT E-Cell Team</p>
+        </div>
+    </footer>
+</body>
+</html>
